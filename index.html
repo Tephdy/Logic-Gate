@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logic Gates Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+
+   <header>
+        <div class="navbar navbar-expand-lg bg-dark">
+            <div class="container-fluid">
+                <a href="index.html" class="navbar-brand text-white">Logic Gates Calculator</a>
+                 <button class="d-flex btn btn-info" id="calculate">Use Calculator</button>
+            </div>
+        </div>
+   </header>
+
+   <main>
+    <br>
+        <div class="container convert hide" id="toggleOnOff">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h4>Convert to Logic Gate</h4>
+                </div>
+
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="input1">Input 1:</label>
+                        <input type="number" min="0" max="1" maxlength="1" minlength="1" class="form-control" placeholder="0/1" id="input1" required/>
+                    </div>
+
+                    <div class="mb3">
+                        <label for="input2">Input 2:</label>
+                        <input type="number" min="0" max="1" maxlength="1" minlength="1" class="form-control" placeholder="0/1" id="input2" required/>
+                    </div>
+
+                    <div class="mb3">
+                        <br>
+                        <input type="button" class="form-control btn btn-info" value="Convert" id="convert">
+                    </div>
+                    <br>
+
+                    <div class="container hide" id="toggleResult">
+                        <!-- AND Gate -->
+                        <div class="card">
+                            <div class="card-header"><b>AND Gate</b></div>
+                            <div class="card-body">
+                                <table class="table table-striped" id="andGate">
+                                    <tr>
+                                        <th class="text-center">A</th>
+                                        <th class="text-center">B</th>
+                                        <th class="text-center">Output</th>
+                                    </tr>
+        
+                                    <tr>
+                                        <td class="text-center" id="fetchedInput1"></td>
+                                        <td class="text-center" id="fetchedOutput1"></td>
+                                        <td class="text-center" id="result"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <br>
+                        <!-- end of AND Gate -->
+
+                         <!-- OR Gate -->
+                         <div class="card">
+                            <div class="card-header"><b>OR Gate</b></div>
+                            <div class="card-body">
+                                <table class="table table-striped" id="andGate">
+                                    <tr>
+                                        <th class="text-center">A</th>
+                                        <th class="text-center">B</th>
+                                        <th class="text-center">Output</th>
+                                    </tr>
+        
+                                    <tr>
+                                        <td class="text-center" id="fetchedInput"></td>
+                                        <td class="text-center" id="fetchedOutput"></td>
+                                        <td class="text-center" id="ORresult"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <br>
+                        <!-- end of OR Gate -->
+
+                        <!-- NOT Gate -->
+                        <div class="card">
+                            <div class="card-header"><b>NOT Gate</b></div>
+                            <div class="card-body">
+                                <table class="table table-striped" id="andGate">
+                                    <tr>
+                                        <th class="text-center">A</th>
+                                        <th class="text-center">Output</th>
+                                    </tr>
+        
+                                    <tr>
+                                        <td class="text-center" id="fetchedInput2"></td>
+                                        <td class="text-center" id="NOTresult"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <br>
+                        <!-- end of NOT Gate -->
+
+                        <!-- NAND Gate -->
+                        <div class="card">
+                            <div class="card-header"><b>NAND Gate</b></div>
+                            <div class="card-body">
+                                <table class="table table-striped" id="andGate">
+                                    <tr>
+                                        <th class="text-center">A</th>
+                                        <th class="text-center">B</th>
+                                        <th class="text-center">Output</th>
+                                    </tr>
+        
+                                    <tr>
+                                        <td class="text-center" id="fetchedInput3"></td>
+                                        <td class="text-center" id="fetchedOutput3"></td>
+                                        <td class="text-center" id="NANDresult"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <br>
+                        <!-- end of NAND Gate -->
+
+                        
+                        <!-- NOR Gate -->
+                        <div class="card">
+                            <div class="card-header"><b>NOR Gate</b></div>
+                            <div class="card-body">
+                                <table class="table table-striped" id="andGate">
+                                    <tr>
+                                        <th class="text-center">A</th>
+                                        <th class="text-center">B</th>
+                                        <th class="text-center">Output</th>
+                                    </tr>
+        
+                                    <tr>
+                                        <td class="text-center" id="fetchedInput4"></td>
+                                        <td class="text-center" id="fetchedOutput4"></td>
+                                        <td class="text-center" id="NORresult"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <br>
+                        <!-- end of NOR Gate -->
+
+                        <!-- XOR Gate -->
+                        <div class="card">
+                            <div class="card-header"><b>XOR Gate</b></div>
+                            <div class="card-body">
+                                <table class="table table-striped" id="andGate">
+                                    <tr>
+                                        <th class="text-center">A</th>
+                                        <th class="text-center">B</th>
+                                        <th class="text-center">Output</th>
+                                    </tr>
+        
+                                    <tr>
+                                        <td class="text-center" id="fetchedInput5"></td>
+                                        <td class="text-center" id="fetchedOutput5"></td>
+                                        <td class="text-center" id="XORresult"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <br>
+                        <!-- end of XOR Gate -->
+
+                        
+                        <!-- XNOR Gate -->
+                        <div class="card">
+                            <div class="card-header"><b>XNOR Gate</b></div>
+                            <div class="card-body">
+                                <table class="table table-striped" id="andGate">
+                                    <tr>
+                                        <th class="text-center">A</th>
+                                        <th class="text-center">B</th>
+                                        <th class="text-center">Output</th>
+                                    </tr>
+        
+                                    <tr>
+                                        <td class="text-center" id="fetchedInput6"></td>
+                                        <td class="text-center" id="fetchedOutput6"></td>
+                                        <td class="text-center" id="XNORresult"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <br>
+                        <!-- end of XNOR Gate -->
+
+                        
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <!-- lesson -->
+        <div class="container lesson">
+            <div class="card">
+                <div class="ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/Q9gmAgwT6o8?si=M-Bs7dHEUgvsAz4Q" title="LOGIC GATES, Truth tables, Boolean Algebra, AND, OR, NOT, NAND & NOR gates" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                  </div>
+                <div class="card-header bg-dark text-white">
+                    <h1>Logic Gates</h1>
+                </div>
+                <div class="card-body">
+                    <p><u><b>Logic gates</b></u> are the fundamental building blocks of digital circuits. They process binary inputs <u><b>(0s and 1s)</b></u> to produce a single binary output. Each logic gate represents a basic logical operation. Here's an overview of the main types:</p>
+                </div>
+            </div>
+            <br>
+    
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <b>1. AND Gate</b>
+                    <img src="images/and.png" alt="logic gates and symbol" width="30" height="24">
+                </div>
+                
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><b>Function:</b> The AND gate outputs 1 only if all its inputs are 1. Otherwise, it outputs 0.</li>
+                        <li class="list-group-item"><b>Truth Table:</b></li>
+                        <li class="list-group-item">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th class="text-center">A</th>
+                                    <th class="text-center">B</th>
+                                    <th class="text-center">Output</th>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">0</td>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">0</td>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">0</td>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">1</td>
+                                </tr>
+                            </table>
+                        </li>
+                    </ul>
+                </div>
+               
+            </div>
+            <br>
+    
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <b>2. OR Gate</b>
+                    <img src="images/or.png" alt="logic gates and symbol" width="30" height="24">
+                </div>
+                
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><b>Function:</b> The OR gate outputs 1 if at least one of its inputs is 1. It outputs 0 only when all inputs are 0.</li>
+                        <li class="list-group-item"><b>Truth Table:</b></li>
+                        <li class="list-group-item">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th class="text-center">A</th>
+                                    <th class="text-center">B</th>
+                                    <th class="text-center">Output</th>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">0</td>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">1</td>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">1</td>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">1</td>
+                                </tr>
+                            </table>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <b>3. NOT Gate (Inverter)</b>
+                    <img src="images/not.png" alt="logic gates and symbol" width="30" height="24">
+                </div>
+                
+                
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><b>Function:</b> The NOT gate has only one input and flips its value. If the input is 0, the output is 1, and vice versa.</li>
+                        <li class="list-group-item"><b>Truth Table:</b></li>
+                        <li class="list-group-item">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th class="text-center">A</th>
+                                    <th class="text-center">Output</th>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">1</td>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">0</td>
+                                </tr>
+                
+                            </table>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+    
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <b>4. NAND Gate</b>
+                    <img src="images/nand.png" alt="logic gates and symbol" width="30" height="24">
+                </div>
+                
+    
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><b>Function:</b> The NAND gate is the opposite of the AND gate. It outputs 0 only when all inputs are 1, and 1 otherwise.</li>
+                        <li class="list-group-item"><b>Truth Table:</b></li>
+                        <li class="list-group-item">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th class="text-center">A</th>
+                                    <th class="text-center">B</th>
+                                    <th class="text-center">Output</th>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">1</td>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">1</td>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">1</td>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">0</td>
+                                </tr>
+                            </table>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+    
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <b>5. NOR Gate</b>
+                    <img src="images/nor.png" alt="logic gates and symbol" width="30" height="24">
+                </div>
+                
+    
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><b>Function:</b> The NOR gate is the opposite of the OR gate. It outputs 0 if any of the inputs are 1. It only outputs 1 when all inputs are 0.</li>
+                        <li class="list-group-item"><b>Truth Table:</b></li>
+                        <li class="list-group-item">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th class="text-center">A</th>
+                                    <th class="text-center">B</th>
+                                    <th class="text-center">Output</th>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">1</td>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">0</td>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">0</td>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">0</td>
+                                </tr>
+                            </table>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+    
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <b>6. XOR Gate (Exclusive OR)</b>
+                    <img src="images/xor.png" alt="logic gates and symbol" width="30" height="24">
+                </div>
+                
+    
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><b>Function:</b> The XOR gate outputs 1 only if exactly one of its inputs is 1. It outputs 0 if both inputs are the same.</li>
+                        <li class="list-group-item"><b>Truth Table:</b>
+                        </li>
+                        <li class="list-group-item">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th class="text-center">A</th>
+                                    <th class="text-center">B</th>
+                                    <th class="text-center">Output</th>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">0</td>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">1</td>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">1</td>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">0</td>
+                                </tr>
+                            </table>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+    
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <b>7. XNOR Gate (Exclusive NOR)</b>
+                    <img src="images/xnor.png" alt="logic gates and symbol" width="30" height="24">
+                </div>
+                <br>
+    
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><b>Function:</b> The XNOR gate is the opposite of the XOR gate. It outputs 1 if the inputs are the same, and 0 if they are different.</li>
+                        <li class="list-group-item"><b>Truth Table:</b></li>
+                        <li class="list-group-item">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th class="text-center">A</th>
+                                    <th class="text-center">B</th>
+                                    <th class="text-center">Output</th>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">1</td>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">0</td>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">0</td>
+                                </tr>
+                
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">1</td>
+                                </tr>
+                            </table>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+
+            <div class="container">
+                <h1 class="text-dark text-center">NOTHING FOLLOWS!</h1>
+            </div>
+        </div>
+   </main>
+   <br>
+
+<footer class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+        <span class="text-white text-center">Developed by: <a href="https://www.facebook.com/Osseepphh" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-0-hover text-white">TephdyTech</a></span>
+        <br>
+        <span class="text-white text-center">All Rights Reserved 2024</span>
+    </div>
+</footer >
+
+<script src="calculate.js"></script>
+    
+</body>
+</html>
